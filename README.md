@@ -15,8 +15,31 @@
 参考: https://learn.adafruit.com/welcome-to-circuitpython/circuitpython-libraries
 
 ### 3. 以下のライブラリをボードの`/lib`フォルダに入れる 
-- `adafruit_displayio_ssd1306.mpy` 
+- `adafruit_ticks.mpy` 
 - `adafruit_framebuf.mpy` 
 - `adafruit_ssd1306.mpy` 
+- `asyncio` (フォルダごと)
 
-### 4. ボードの`/code.py`にプログラムを書き込む
+### 4. 以下のフォントをボードの`/`に`font5x8.bin`として入れる
+https://github.com/adafruit/Adafruit_CircuitPython_framebuf/blob/main/examples/font5x8.bin
+
+### 5. ボードの`/code.py`にプログラムを書き込む
+
+## デバッグ方法
+### 方法1. Mu Editorをインストールする
+https://codewith.mu
+
+### 方法2. `screen`コマンドでシリアル接続する
+#### 1. デバイスを接続せずに以下を打つ
+```bash
+ls /dev/tty.*
+```
+#### 2. デバイスを接続してもう一度以下を打ち、デバイスを特定
+```bash
+ls /dev/tty.*
+```
+#### 3. 接続
+```bash
+screen /dev/tty.board_name 115200
+```
+(もし`$TERM too long - sorry.`と言われたら、`export TERM=xterm-256color`を打ったあとにscreenコマンドを実行してください)
